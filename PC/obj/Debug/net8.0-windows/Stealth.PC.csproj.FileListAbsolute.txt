@@ -1,0 +1,12 @@
+/workspaces/Stelth/PC/obj/Debug/net8.0-windows/Stealth.PC.csproj.AssemblyReference.cache
+/workspaces/Stelth/PC/obj/Debug/net8.0-windows/MainWindow.baml
+/workspaces/Stelth/PC/obj/Debug/net8.0-windows/App.baml
+/workspaces/Stelth/PC/obj/Debug/net8.0-windows/MainWindow.g.cs
+/workspaces/Stelth/PC/obj/Debug/net8.0-windows/App.g.cs
+/workspaces/Stelth/PC/obj/Debug/net8.0-windows/Stealth.PC_MarkupCompile.cache
+/workspaces/Stelth/PC/obj/Debug/net8.0-windows/Stealth.PC.g.resources
+/workspaces/Stelth/PC/obj/Debug/net8.0-windows/Stealth.PC.GeneratedMSBuildEditorConfig.editorconfig
+/workspaces/Stelth/PC/obj/Debug/net8.0-windows/Stealth.PC.AssemblyInfoInputs.cache
+/workspaces/Stelth/PC/obj/Debug/net8.0-windows/Stealth.PC.AssemblyInfo.cs
+/workspaces/Stelth/PC/obj/Debug/net8.0-windows/Stealth.PC.csproj.CoreCompileInputs.cache
+/workspaces/Stelth/PC/obj/Debug/net8.0-windows/Stealth.PC.sourcelink.json

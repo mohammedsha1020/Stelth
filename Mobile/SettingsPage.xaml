@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage x:Class="Stealth.Mobile.SettingsPage"
+             xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             Title="Settings">
+    <ScrollView>
+        <VerticalStackLayout Spacing="25" Padding="30,0">
+            <Label Text="Settings" Style="{StaticResource Headline}" />
+            
+            <Frame Padding="20" CornerRadius="10">
+                <VerticalStackLayout Spacing="15">
+                    <Label Text="Auto Start" FontAttributes="Bold" />
+                    <Switch x:Name="AutoStartSwitch" />
+                    <Label Text="Start Stealth automatically when device boots" FontSize="12" />
+                </VerticalStackLayout>
+            </Frame>
+
+            <Frame Padding="20" CornerRadius="10">
+                <VerticalStackLayout Spacing="15">
+                    <Label Text="Security" FontAttributes="Bold" />
+                    <Switch x:Name="EncryptionSwitch" IsToggled="True" />
+                    <Label Text="Enable AES encryption (recommended)" FontSize="12" />
+                </VerticalStackLayout>
+            </Frame>
+
+            <Frame Padding="20" CornerRadius="10">
+                <VerticalStackLayout Spacing="15">
+                    <Label Text="Device Information" FontAttributes="Bold" />
+                    <Label x:Name="DeviceIdLabel" Text="Device ID: Loading..." FontSize="12" />
+                    <Button Text="Generate New Trusted Code" x:Name="GenerateCodeBtn" Clicked="OnGenerateCodeClicked" />
+                </VerticalStackLayout>
+            </Frame>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

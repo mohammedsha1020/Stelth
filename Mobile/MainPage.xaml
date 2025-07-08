@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage x:Class="Stealth.Mobile.MainPage"
+             xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             Title="Stealth Remote">
+
+    <ScrollView>
+        <VerticalStackLayout Spacing="25" Padding="30,0" VerticalOptions="Center">
+
+            <Image
+                Source="dotnet_bot.png"
+                HeightRequest="185"
+                Aspect="AspectFit"
+                SemanticProperties.Description="Stealth remote control app" />
+
+            <Label
+                x:Name="WelcomeLabel"
+                Text="Welcome to Stealth!"
+                Style="{StaticResource Headline}"
+                SemanticProperties.HeadingLevel="Level1" />
+
+            <Label
+                Text="Remote control and screen sharing between PC and Mobile"
+                Style="{StaticResource SubHeadline}"
+                SemanticProperties.HeadingLevel="Level2"
+                SemanticProperties.Description="Welcome to Stealth, the remote control application" />
+
+            <Frame BackgroundColor="{StaticResource Primary}" Padding="20" CornerRadius="10">
+                <VerticalStackLayout Spacing="15">
+                    <Label Text="Connection Status" FontAttributes="Bold" TextColor="White" />
+                    <Label x:Name="StatusLabel" Text="Disconnected" TextColor="White" />
+                    
+                    <Entry x:Name="ServerIpEntry" 
+                           Placeholder="PC Server IP Address" 
+                           Text="192.168.1.100"
+                           TextColor="White"
+                           PlaceholderColor="LightGray" />
+                    
+                    <Entry x:Name="TrustedCodeEntry" 
+                           Placeholder="Trusted Code" 
+                           IsPassword="True"
+                           TextColor="White"
+                           PlaceholderColor="LightGray" />
+                    
+                    <Button x:Name="ConnectBtn"
+                            Text="Connect to PC"
+                            Clicked="OnConnectClicked"
+                            BackgroundColor="{StaticResource Secondary}"
+                            TextColor="White" />
+                </VerticalStackLayout>
+            </Frame>
+
+            <Frame BackgroundColor="{StaticResource Tertiary}" Padding="20" CornerRadius="10">
+                <VerticalStackLayout Spacing="15">
+                    <Label Text="Screen Sharing" FontAttributes="Bold" TextColor="White" />
+                    
+                    <Button x:Name="StartSharingBtn"
+                            Text="Start Sharing Screen"
+                            Clicked="OnStartSharingClicked"
+                            BackgroundColor="Orange"
+                            TextColor="White" />
+                    
+                    <Button x:Name="ViewRemoteBtn"
+                            Text="View PC Screen"
+                            Clicked="OnViewRemoteClicked"
+                            BackgroundColor="Purple"
+                            TextColor="White" />
+                </VerticalStackLayout>
+            </Frame>
+
+            <Label x:Name="DeviceInfoLabel" 
+                   Text="Device ID: Loading..."
+                   FontSize="12"
+                   HorizontalOptions="Center" />
+
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>

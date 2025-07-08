@@ -1,0 +1,13 @@
+/workspaces/Stelth/Shared/bin/Debug/net8.0/Stealth.Shared.deps.json
+/workspaces/Stelth/Shared/bin/Debug/net8.0/Stealth.Shared.dll
+/workspaces/Stelth/Shared/bin/Debug/net8.0/Stealth.Shared.pdb
+/workspaces/Stelth/Shared/obj/Debug/net8.0/Stealth.Shared.csproj.AssemblyReference.cache
+/workspaces/Stelth/Shared/obj/Debug/net8.0/Stealth.Shared.GeneratedMSBuildEditorConfig.editorconfig
+/workspaces/Stelth/Shared/obj/Debug/net8.0/Stealth.Shared.AssemblyInfoInputs.cache
+/workspaces/Stelth/Shared/obj/Debug/net8.0/Stealth.Shared.AssemblyInfo.cs
+/workspaces/Stelth/Shared/obj/Debug/net8.0/Stealth.Shared.csproj.CoreCompileInputs.cache
+/workspaces/Stelth/Shared/obj/Debug/net8.0/Stealth.Shared.sourcelink.json
+/workspaces/Stelth/Shared/obj/Debug/net8.0/Stealth.Shared.dll
+/workspaces/Stelth/Shared/obj/Debug/net8.0/refint/Stealth.Shared.dll
+/workspaces/Stelth/Shared/obj/Debug/net8.0/Stealth.Shared.pdb
+/workspaces/Stelth/Shared/obj/Debug/net8.0/ref/Stealth.Shared.dll

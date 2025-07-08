@@ -1,0 +1,283 @@
+<Window x:Class="Stealth.PC.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Stealth - Remote Control" Height="450" Width="700"
+        WindowStartupLocation="CenterScreen"
+        MinHeight="400" MinWidth="600">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- Header -->
+        <Border Grid.Row="0" Background="#2C3E50" Padding="15">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                
+                <StackPanel Grid.Column="0" Orientation="Horizontal">
+                    <TextBlock Text="🎯" FontSize="24" Margin="0,0,10,0"/>
+                    <StackPanel>
+                        <TextBlock Text="Stealth Remote Control" 
+                                 FontSize="18" FontWeight="Bold" 
+                                 Foreground="White"/>
+                        <TextBlock x:Name="StatusText" Text="Disconnected" 
+                                 FontSize="12" Foreground="#BDC3C7"/>
+                    </StackPanel>
+                </StackPanel>
+
+                <StackPanel Grid.Column="1" Orientation="Horizontal">
+                    <Button x:Name="MinimizeButton" Content="🗕" 
+                          Width="30" Height="30" Margin="5,0"
+                          Background="Transparent" Foreground="White"
+                          BorderThickness="0" FontSize="14"
+                          Click="MinimizeButton_Click"/>
+                    <Button x:Name="CloseButton" Content="✕" 
+                          Width="30" Height="30" Margin="5,0"
+                          Background="#E74C3C" Foreground="White"
+                          BorderThickness="0" FontSize="14"
+                          Click="CloseButton_Click"/>
+                </StackPanel>
+            </Grid>
+        </Border>
+
+        <!-- Main Content -->
+        <TabControl Grid.Row="1" Background="#ECF0F1">
+            <!-- Connection Tab -->
+            <TabItem Header="🔗 Connection">
+                <Grid Margin="20">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+
+                    <!-- Connection Controls -->
+                    <GroupBox Grid.Row="0" Header="Connection Settings" Margin="0,0,0,20">
+                        <Grid Margin="15">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+
+                            <TextBlock Grid.Row="0" Grid.Column="0" Text="Mobile IP:" 
+                                     VerticalAlignment="Center" Margin="0,0,10,0"/>
+                            <TextBox x:Name="IpAddressTextBox" Grid.Row="0" Grid.Column="1" 
+                                   Text="192.168.1.100" Margin="0,0,10,0" Padding="5"/>
+                            <Button x:Name="ConnectButton" Grid.Row="0" Grid.Column="2" 
+                                  Content="Connect" Width="100" Height="30"
+                                  Background="#3498DB" Foreground="White"
+                                  BorderThickness="0" Click="ConnectButton_Click"/>
+
+                            <TextBlock Grid.Row="1" Grid.Column="0" Text="Port:" 
+                                     VerticalAlignment="Center" Margin="0,10,10,0"/>
+                            <TextBox x:Name="PortTextBox" Grid.Row="1" Grid.Column="1" 
+                                   Text="7890" Margin="0,10,10,0" Padding="5"/>
+                            <Button x:Name="StartServerButton" Grid.Row="1" Grid.Column="2" 
+                                  Content="Start Server" Width="100" Height="30"
+                                  Background="#27AE60" Foreground="White"
+                                  BorderThickness="0" Margin="0,10,0,0"
+                                  Click="StartServerButton_Click"/>
+
+                            <TextBlock Grid.Row="2" Grid.Column="0" Text="Device ID:" 
+                                     VerticalAlignment="Center" Margin="0,10,10,0"/>
+                            <TextBox x:Name="DeviceIdTextBox" Grid.Row="2" Grid.Column="1" 
+                                   IsReadOnly="True" Margin="0,10,10,0" Padding="5"
+                                   Background="#F8F9FA"/>
+                            <Button x:Name="CopyIdButton" Grid.Row="2" Grid.Column="2" 
+                                  Content="Copy ID" Width="100" Height="30"
+                                  Background="#9B59B6" Foreground="White"
+                                  BorderThickness="0" Margin="0,10,0,0"
+                                  Click="CopyIdButton_Click"/>
+                        </Grid>
+                    </GroupBox>
+
+                    <!-- Trusted Code -->
+                    <GroupBox Grid.Row="1" Header="Trusted Code" Margin="0,0,0,20">
+                        <Grid Margin="15">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+
+                            <TextBox x:Name="TrustedCodeTextBox" Grid.Column="0" 
+                                   Margin="0,0,10,0" Padding="5" FontFamily="Consolas"/>
+                            <Button x:Name="GenerateCodeButton" Grid.Column="1" 
+                                  Content="Generate" Width="80" Height="30"
+                                  Background="#F39C12" Foreground="White"
+                                  BorderThickness="0" Margin="0,0,10,0"
+                                  Click="GenerateCodeButton_Click"/>
+                            <Button x:Name="CopyCodeButton" Grid.Column="2" 
+                                  Content="Copy" Width="60" Height="30"
+                                  Background="#9B59B6" Foreground="White"
+                                  BorderThickness="0"
+                                  Click="CopyCodeButton_Click"/>
+                        </Grid>
+                    </GroupBox>
+
+                    <!-- Screen Sharing Controls -->
+                    <GroupBox Grid.Row="2" Header="Screen Sharing" Margin="0,0,0,20">
+                        <StackPanel Margin="15" Orientation="Horizontal">
+                            <Button x:Name="StartSharingButton" Content="🖥️ Start Sharing" 
+                                  Width="120" Height="35" Margin="0,0,10,0"
+                                  Background="#E67E22" Foreground="White"
+                                  BorderThickness="0" Click="StartSharingButton_Click"/>
+                            <Button x:Name="StopSharingButton" Content="⏹️ Stop Sharing" 
+                                  Width="120" Height="35" Margin="0,0,10,0"
+                                  Background="#E74C3C" Foreground="White"
+                                  BorderThickness="0" IsEnabled="False"
+                                  Click="StopSharingButton_Click"/>
+                            <TextBlock Text="FPS:" VerticalAlignment="Center" Margin="20,0,5,0"/>
+                            <Slider x:Name="FpsSlider" Width="100" Minimum="5" Maximum="60" 
+                                  Value="30" VerticalAlignment="Center"
+                                  ValueChanged="FpsSlider_ValueChanged"/>
+                            <TextBlock x:Name="FpsLabel" Text="30" VerticalAlignment="Center" 
+                                     Margin="5,0,0,0" MinWidth="20"/>
+                        </StackPanel>
+                    </GroupBox>
+
+                    <!-- Connected Devices -->
+                    <GroupBox Grid.Row="3" Header="Connected Devices">
+                        <ListView x:Name="ConnectedDevicesListView" Margin="15"
+                                Background="White">
+                            <ListView.View>
+                                <GridView>
+                                    <GridViewColumn Header="Device Name" Width="150"/>
+                                    <GridViewColumn Header="Device Type" Width="100"/>
+                                    <GridViewColumn Header="IP Address" Width="120"/>
+                                    <GridViewColumn Header="Connected At" Width="130"/>
+                                    <GridViewColumn Header="Status" Width="80"/>
+                                </GridView>
+                            </ListView.View>
+                        </ListView>
+                    </GroupBox>
+                </Grid>
+            </TabItem>
+
+            <!-- Settings Tab -->
+            <TabItem Header="⚙️ Settings">
+                <ScrollViewer>
+                    <Grid Margin="20">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+
+                        <!-- Auto Start -->
+                        <GroupBox Grid.Row="0" Header="Auto Start" Margin="0,0,0,20">
+                            <StackPanel Margin="15">
+                                <CheckBox x:Name="AutoStartCheckBox" Content="Start Stealth automatically when Windows starts"
+                                        Checked="AutoStartCheckBox_Changed" Unchecked="AutoStartCheckBox_Changed"/>
+                                <TextBlock Text="When enabled, Stealth will run silently in the background on boot"
+                                         Foreground="Gray" Margin="0,5,0,0" FontSize="11"/>
+                            </StackPanel>
+                        </GroupBox>
+
+                        <!-- Security -->
+                        <GroupBox Grid.Row="1" Header="Security" Margin="0,0,0,20">
+                            <StackPanel Margin="15">
+                                <CheckBox x:Name="EncryptionCheckBox" Content="Enable AES encryption (recommended)"
+                                        IsChecked="True" IsEnabled="False"/>
+                                <CheckBox x:Name="LogConnectionsCheckBox" Content="Log connection attempts"
+                                        IsChecked="True" Margin="0,10,0,0"/>
+                                <Button x:Name="ClearTrustedDevicesButton" Content="Clear All Trusted Devices"
+                                      Width="180" Height="30" Margin="0,15,0,0"
+                                      Background="#E74C3C" Foreground="White"
+                                      BorderThickness="0" HorizontalAlignment="Left"
+                                      Click="ClearTrustedDevicesButton_Click"/>
+                            </StackPanel>
+                        </GroupBox>
+
+                        <!-- Performance -->
+                        <GroupBox Grid.Row="2" Header="Performance" Margin="0,0,0,20">
+                            <Grid Margin="15">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
+
+                                <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="0,0,0,10">
+                                    <TextBlock Text="JPEG Quality:" VerticalAlignment="Center" Margin="0,0,10,0"/>
+                                    <Slider x:Name="QualitySlider" Width="150" Minimum="10" Maximum="100" 
+                                          Value="75" VerticalAlignment="Center"/>
+                                    <TextBlock x:Name="QualityLabel" Text="75%" VerticalAlignment="Center" 
+                                             Margin="10,0,0,0" MinWidth="30"/>
+                                </StackPanel>
+
+                                <CheckBox Grid.Row="1" x:Name="AdaptiveQualityCheckBox" 
+                                        Content="Adaptive quality based on network speed"
+                                        Margin="0,0,0,10"/>
+                                <CheckBox Grid.Row="2" x:Name="ReduceColorsCheckBox" 
+                                        Content="Reduce color depth for better performance"/>
+                            </Grid>
+                        </GroupBox>
+                    </Grid>
+                </ScrollViewer>
+            </TabItem>
+
+            <!-- Logs Tab -->
+            <TabItem Header="📋 Logs">
+                <Grid Margin="20">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+
+                    <TextBox x:Name="LogTextBox" Grid.Row="0" 
+                           IsReadOnly="True" 
+                           VerticalScrollBarVisibility="Auto"
+                           HorizontalScrollBarVisibility="Auto"
+                           FontFamily="Consolas" FontSize="11"
+                           Background="#2C3E50" Foreground="#ECF0F1"
+                           Padding="10"/>
+
+                    <StackPanel Grid.Row="1" Orientation="Horizontal" 
+                              HorizontalAlignment="Right" Margin="0,10,0,0">
+                        <Button x:Name="ClearLogsButton" Content="Clear Logs" 
+                              Width="100" Height="30" Margin="0,0,10,0"
+                              Background="#95A5A6" Foreground="White"
+                              BorderThickness="0" Click="ClearLogsButton_Click"/>
+                        <Button x:Name="ExportLogsButton" Content="Export Logs" 
+                              Width="100" Height="30"
+                              Background="#34495E" Foreground="White"
+                              BorderThickness="0" Click="ExportLogsButton_Click"/>
+                    </StackPanel>
+                </Grid>
+            </TabItem>
+        </TabControl>
+
+        <!-- Status Bar -->
+        <Border Grid.Row="2" Background="#34495E" Padding="10">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+
+                <TextBlock x:Name="StatusBarText" Grid.Column="0" 
+                         Text="Ready" Foreground="#BDC3C7" FontSize="12"/>
+                <TextBlock x:Name="NetworkStatusText" Grid.Column="1" 
+                         Text="Offline" Foreground="#BDC3C7" FontSize="12" Margin="20,0"/>
+                <TextBlock x:Name="TimeText" Grid.Column="2" 
+                         Foreground="#BDC3C7" FontSize="12"/>
+            </Grid>
+        </Border>
+    </Grid>
+</Window>
